@@ -1,150 +1,140 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
-
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
+.pageFlow {
+  width: 100%;
+  color: #080808;
+  background: #fff;
+  scroll-snap-type: y proximity;
 }
 
-.main {
-  display: flex;
-  flex: 1;
+.slide {
+  position: relative;
   width: 100%;
-  max-width: 800px;
-  flex-direction: column;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #fff;
+  scroll-snap-align: start;
+}
+
+.introHeader {
+  position: absolute;
+  top: 8.88888889svh;
+  left: 50%;
+  display: flex;
+  width: min(89.47916667vw, 1718px);
   align-items: flex-start;
   justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
+  transform: translateX(-50%);
 }
 
-.intro {
+.introHeader h1 {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.profileInfo {
+  width: 269px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+.profileInfo p {
+  margin: 0;
+}
+
+.contact {
+  margin-top: 37.4px;
+}
+
+.startButton {
+  position: absolute;
+  bottom: 9.44444444svh;
+  left: 50%;
+  display: flex;
+  width: min(824px, calc(100% - 48px));
+  height: 112px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #080808;
+  border-radius: 200px;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 40px;
+  transform: translateX(-50%);
+  transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.startButton:hover,
+.startButton:focus-visible {
+  color: #fff;
+  background: #080808;
+  outline: none;
+  transform: translateX(-50%) translateY(-3px);
+}
+
+.projectList {
+  position: absolute;
+  top: 12.96296296svh;
+  left: max(32px, 5.36458333vw);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  text-align: left;
-  gap: 24px;
+  gap: 80px;
 }
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
+.projectList a {
+  font-size: 24px;
   font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
+  line-height: 40px;
+  white-space: nowrap;
 }
 
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
+.projectList a:hover,
+.projectList a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  outline: none;
 }
 
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.ctas {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
-}
-
-.ctas a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
-}
-
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
-}
-
-a.secondary {
-  border-color: var(--button-secondary-border);
-}
-
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
+@media (max-width: 700px) {
+  .introHeader {
+    top: 32px;
+    width: calc(100% - 48px);
   }
 
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
+  .introHeader h1 {
+    font-size: 28px;
+  }
+
+  .profileInfo {
+    position: absolute;
+    top: 88px;
+    right: 0;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .startButton {
+    bottom: 32px;
+    height: 88px;
+    font-size: 24px;
+  }
+
+  .projectList {
+    top: 80px;
+    left: 24px;
+    gap: 56px;
+  }
+
+  .projectList a {
+    font-size: 20px;
   }
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
+@media (prefers-reduced-motion: reduce) {
+  .startButton {
+    transition: none;
   }
-
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-
-  .page {
-    --background: #000;
-    --foreground: #000;
-
-    --text-primary: #ededed;
-    --text-secondary: #999;
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
-  }
-}
-
-.code {
-  font-family: var(--font-geist-mono);
-  font-size: 0.9em;
-  background: color-mix(in srgb, currentColor 8%, transparent);
-  padding: 0.1em 0.4em;
-  border-radius: 6px;
 }
