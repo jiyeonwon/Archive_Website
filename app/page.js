@@ -22,8 +22,6 @@ export default function Home() {
         </address>
       </header>
 
-      <h1 className={styles.prompt}>SELECT A FOLDER !</h1>
-
       <section className={styles.folderGrid} aria-label="Project folders">
         {folders.map((folder) => (
           <article className={styles.folder} key={folder}>
