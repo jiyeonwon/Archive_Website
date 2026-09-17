@@ -13,9 +13,9 @@
   position: absolute;
   top: 7.87svh;
   left: 50%;
-  display: grid;
-  width: 93.65vw;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
+  width: max-content;
+  gap: 33.8021vw;
   align-items: start;
   transform: translateX(-50%);
   font-size: 0.8333vw;
@@ -32,9 +32,12 @@
   width: 11.6667vw;
 }
 
+.header > * {
+  flex-shrink: 0;
+}
+
 .contact {
-  width: 14.0104vw;
-  justify-self: end;
+  width: 9.3229vw;
   font-style: normal;
 }
 
