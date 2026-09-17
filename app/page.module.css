@@ -77,7 +77,7 @@
 .projectWindow {
   position: relative;
   z-index: 1;
-  margin: 23.9815svh 0 0 5.20833vw;
+  margin: 24.35185svh auto 0;
   width: 86.97917vw;
   height: 26.40625vw;
   border: 1px solid #000;
