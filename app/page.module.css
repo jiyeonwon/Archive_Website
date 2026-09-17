@@ -44,7 +44,7 @@
   left: 50%;
   margin: 0;
   transform: translateX(-50%);
-  font-size: 2.0833vw;
+  font-size: 1.6667vw;
   font-weight: 500;
   line-height: 2.0833vw;
   white-space: nowrap;
@@ -52,26 +52,26 @@
 
 .folderGrid {
   position: absolute;
-  top: 32.31svh;
-  left: 3.18vw;
+  top: 36.9444svh;
+  left: 11.7708vw;
   display: grid;
-  width: 90.36vw;
-  grid-template-columns: repeat(4, 17.0833vw);
+  width: 76.4583vw;
+  grid-template-columns: repeat(4, 14.4544vw);
   justify-content: space-between;
 }
 
 .folder {
   display: flex;
-  width: 17.0833vw;
+  width: 14.4544vw;
   flex-direction: column;
   align-items: center;
 }
 
 .folderIcon {
   display: block;
-  width: 17.0833vw;
-  height: 17.0833vw;
-  margin-bottom: -2.8125vw;
+  width: 14.4544vw;
+  height: 14.4544vw;
+  margin-bottom: -2.3878vw;
   object-fit: cover;
 }
 
@@ -79,14 +79,20 @@
   position: relative;
   z-index: 1;
   margin: 0;
-  padding: 0.3125vw 1.3542vw;
-  border: 1px solid #000;
-  box-shadow: 0 4px 4px rgb(0 0 0 / 40%);
+  padding: 0.2644vw 1.1014vw;
+  border: 0.846px solid #000;
+  box-shadow: 0 3.384px 3.384px rgb(0 0 0 / 40%);
   background: #fff;
-  font-size: 1.4583vw;
+  font-size: 1.2339vw;
   font-weight: 500;
-  line-height: 2.0833vw;
+  line-height: 1.7627vw;
   white-space: nowrap;
+  transition: color 160ms ease, background-color 160ms ease;
+}
+
+.folderLabel:hover {
+  color: #fff;
+  background: #000;
 }
 
 .archiveTitle {
