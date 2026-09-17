@@ -52,10 +52,150 @@
 }
 
 .folder {
+  position: relative;
   display: flex;
   width: 14.4544vw;
   flex-direction: column;
   align-items: center;
+}
+
+.folderHitArea {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.folder:has(.folderHitArea:hover) .folderLabel,
+.folder:has(.folderHitArea:focus-visible) .folderLabel {
+  color: #fff;
+  background: #000;
+}
+
+.projectWindow {
+  position: relative;
+  z-index: 1;
+  margin: 23.9815svh 0 0 5.20833vw;
+  width: 86.97917vw;
+  height: 26.40625vw;
+  border: 1px solid #000;
+  background: #fff;
+}
+
+.windowBar {
+  height: 3.54167vw;
+  border-bottom: 1px solid #000;
+  padding: 0 2.29167vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.04167vw;
+  font-weight: 400;
+}
+
+.windowBar h1,
+.windowBar button {
+  font: inherit;
+}
+
+.windowBar button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.sidebar {
+  position: absolute;
+  top: 4.27083vw;
+  bottom: 0.83333vw;
+  width: 15.625vw;
+  border-right: 1px solid #000;
+  text-align: center;
+}
+
+.sidebarFolder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2.34375vw;
+}
+
+.sidebarFolder img {
+  width: 13.20219vw;
+  height: 13.20219vw;
+  margin-bottom: -2.17807vw;
+}
+
+.sidebarFolder .folderLabel {
+  padding: 0.24151vw 1.02638vw;
+  line-height: 1.61vw;
+}
+
+.projectCount {
+  margin-top: 0.9124vw;
+  font-size: 0.83333vw;
+  line-height: 1.61vw;
+}
+
+.projectContent {
+  position: absolute;
+  top: 5.36458vw;
+  left: 18.95833vw;
+  width: 63.33333vw;
+}
+
+.projectContent h2 {
+  font-size: 1.45833vw;
+  font-weight: 400;
+  line-height: 2.5vw;
+  margin-bottom: 0.78125vw;
+}
+
+.projectColumns,
+.projectRow {
+  display: grid;
+  grid-template-columns: 23.28% 23.91% 26.78% 22.27% 3.76%;
+  padding: 0 2.50822%;
+  align-items: center;
+  font-size: 0.83333vw;
+  font-weight: 600;
+  line-height: 1.61vw;
+}
+
+.projectColumns {
+  height: 4.58333vw;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.projectRow {
+  min-height: 8.28125vw;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.projectRow:hover,
+.projectRow:focus-visible {
+  background: #000;
+  color: #fff;
+  outline: none;
+}
+
+@media (max-width: 700px) {
+  .projectWindow { margin: 40px 16px 0; width: calc(100% - 32px); height: auto; min-height: 340px; }
+  .windowBar { height: 48px; padding: 0 16px; font-size: 14px; }
+  .sidebar { position: relative; top: auto; bottom: auto; width: 100%; border-right: 0; }
+  .sidebarFolder { margin-top: 8px; }
+  .sidebarFolder img { width: 130px; height: 130px; margin-bottom: -22px; }
+  .sidebarFolder .folderLabel { padding: 3px 12px; font-size: 14px; line-height: 24px; }
+  .projectCount { margin-top: 10px; font-size: 12px; line-height: 20px; }
+  .projectContent { position: relative; top: auto; left: auto; width: auto; margin: 24px 12px; }
+  .projectContent h2 { font-size: 20px; line-height: 30px; margin-bottom: 12px; }
+  .projectColumns, .projectRow { grid-template-columns: 9% 26% 36% 20% 9%; font-size: 11px; line-height: 20px; }
+  .projectColumns { height: 48px; }
+  .projectRow { min-height: 80px; }
 }
 
 .folderIcon {
