@@ -156,6 +156,13 @@
 
 .projectColumns,
 .projectRow {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
   display: grid;
   grid-template-columns: 23.28% 23.91% 26.78% 22.27% 3.76%;
   padding: 0 2.50822%;
@@ -163,6 +170,51 @@
   font-size: 0.83333vw;
   font-weight: 600;
   line-height: 1.61vw;
+}
+
+.detailLayout {
+  position: relative;
+  margin: 29.35185svh 7.76042vw 0 3.17708vw;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 25.20833vw;
+  gap: 2.5vw;
+  height: 60.64852svh;
+}
+
+.portfolioViewer {
+  min-width: 0;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: #111 #e6e6e6;
+  padding-right: 1vw;
+}
+
+.portfolioViewer::-webkit-scrollbar { width: 8px; }
+.portfolioViewer::-webkit-scrollbar-track { background: #e6e6e6; }
+.portfolioViewer::-webkit-scrollbar-thumb { background: #111; border-radius: 4px; }
+.portfolioViewer:focus-visible { outline: 1px solid #111; outline-offset: 3px; }
+.portfolioImage { display: block; width: 100%; height: auto; }
+.detailDescription { position: relative; padding-top: 0.98958vw; overflow-y: auto; }
+.detailDescription h1 { font-size: 1.66667vw; font-weight: 500; line-height: 1.7; }
+.detailSubtitle { font-size: 1.04167vw; font-weight: 400; min-height: 3.17708vw; line-height: 1.7; border-bottom: 1px solid #000; }
+.detailFacts { margin-top: 2.5vw; font-size: 1.25vw; line-height: 1.7; font-weight: 400; }
+.detailFacts div { display: flex; justify-content: space-between; margin-bottom: 0.46875vw; }
+.detailCopy { margin-top: 3.22917vw; font-size: 0.83333vw; line-height: 1.7; font-weight: 400; }
+.detailBack { position: absolute; right: 0; top: 0; border: 0; background: transparent; font: inherit; font-size: 0.83333vw; cursor: pointer; }
+
+@media (max-width: 700px) {
+  .detailLayout { margin: 32px 20px; height: auto; grid-template-columns: 1fr; gap: 24px; }
+  .portfolioViewer { height: 60svh; padding-right: 8px; }
+  .detailDescription { padding-top: 16px; }
+  .detailDescription h1 { font-size: 24px; }
+  .detailSubtitle { font-size: 16px; padding-bottom: 16px; }
+  .detailFacts { margin-top: 24px; font-size: 16px; }
+  .detailCopy { margin-top: 24px; font-size: 14px; }
+  .detailBack { font-size: 14px; }
 }
 
 .projectColumns {

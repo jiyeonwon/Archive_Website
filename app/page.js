@@ -8,6 +8,7 @@ const folders = ["UXUI", "INTERACTION", "BRANDING", "EDITORIAL DESIGN"];
 
 export default function Home() {
   const [showUxui, setShowUxui] = useState(false);
+  const [showMonear, setShowMonear] = useState(false);
   return (
     <main className={styles.archive}>
       <header className={styles.header}>
@@ -41,7 +42,24 @@ export default function Home() {
             <p className={styles.folderLabel}>{folder}</p>
           </article>
         ))}
-      </section> : (
+      </section> : showMonear ? (
+        <section className={styles.detailLayout} aria-label="MONEAR 상세 작업">
+          <div className={styles.portfolioViewer} tabIndex={0} role="region" aria-label="MONEAR 웹포트폴리오 스크롤 영역">
+            <Image src="/monear-portfolio.svg" alt="MONEAR 웹포트폴리오: 사회초년생을 위한 금융 로드맵 서비스의 리서치, 디자인 시스템 및 화면 설계" width={1920} height={46863} unoptimized className={styles.portfolioImage} />
+          </div>
+          <aside className={styles.detailDescription}>
+            <button className={styles.detailBack} type="button" onClick={() => setShowMonear(false)}>← UXUI</button>
+            <h1>MONEAR</h1>
+            <p className={styles.detailSubtitle}>사회초년생을 위한 금융 로드맵 서비스</p>
+            <dl className={styles.detailFacts}>
+              <div><dt>Category</dt><dd>UXUI Design</dd></div>
+              <div><dt>Type</dt><dd>Team project</dd></div>
+              <div><dt>Date</dt><dd>2026.09</dd></div>
+            </dl>
+            <p className={styles.detailCopy}>막연하게만 느껴지는 재무 계획, 어디서부터 시작하고 있나요?<br />MONEAR는 사회초년생의 재무 목표를 구체적인 로드맵으로 설계하고,<br />이를 실천 가능한 금융 행동으로 연결하는 서비스입니다.<br />현재의 수입과 지출, 목표와 상황을 바탕으로 나에게 필요한<br />방향을 찾고, 예상치 못한 변화에도 유연하게 계획을 조정하며<br />원하는 미래에 한 걸음씩 가까워질 수 있도록 돕습니다.<br />작은 금융 행동으로 미래의 목표를 가까이, MONEAR.</p>
+          </aside>
+        </section>
+      ) : (
         <section className={styles.projectWindow} aria-label="Archive / UXUI">
           <div className={styles.windowBar}>
             <h1>Archive / UXUI</h1>
@@ -59,14 +77,14 @@ export default function Home() {
             <div className={styles.projectColumns} aria-hidden="true">
               <span /><span>Name</span><span>Type</span><span>Date</span><span />
             </div>
-            <div className={styles.projectRow} tabIndex={0} aria-label="01 MONEAR, Team project, 2026">
+            <button type="button" className={styles.projectRow} onClick={() => setShowMonear(true)} aria-label="MONEAR 상세 작업 열기">
               <span>01</span><span>MONEAR</span><span>Team project</span><span>2026</span><span aria-hidden="true">→</span>
-            </div>
+            </button>
           </div>
         </section>
       )}
 
-      <p className={styles.archiveTitle}>Archive</p>
+      {!showMonear && <p className={styles.archiveTitle}>Archive</p>}
     </main>
   );
 }
