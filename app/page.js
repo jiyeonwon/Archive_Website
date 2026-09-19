@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
 
@@ -9,26 +9,6 @@ const folders = ["UXUI", "INTERACTION", "BRANDING", "EDITORIAL DESIGN"];
 export default function Home() {
   const [showUxui, setShowUxui] = useState(false);
   const [showMonear, setShowMonear] = useState(false);
-  const portfolioDrag = useRef(null);
-  const [isDragging, setIsDragging] = useState(false);
-
-  function startPortfolioDrag(event) {
-    if (event.pointerType !== "mouse" || event.button !== 0 || event.target.tagName !== "IMG") return;
-    portfolioDrag.current = { y: event.clientY, scrollTop: event.currentTarget.scrollTop };
-    event.currentTarget.setPointerCapture(event.pointerId);
-    setIsDragging(true);
-    event.preventDefault();
-  }
-
-  function movePortfolioDrag(event) {
-    if (!portfolioDrag.current) return;
-    event.currentTarget.scrollTop = portfolioDrag.current.scrollTop + event.clientY - portfolioDrag.current.y;
-  }
-
-  function endPortfolioDrag() {
-    portfolioDrag.current = null;
-    setIsDragging(false);
-  }
   return (
     <main className={styles.archive}>
       <header className={styles.header}>
@@ -63,9 +43,13 @@ export default function Home() {
           </article>
         ))}
       </section> : showMonear ? (
-        <section className={styles.detailLayout} aria-label="MONEAR 상세 작업">
+        <section className={styles.detailWindow} aria-label="MONEAR 상세 작업">
+          <div className={styles.windowBar}>
+            <p>Archive / UXUI</p>
+            <button type="button" aria-label="MONEAR 상세 작업 닫기" onClick={() => setShowMonear(false)}>[ X ]</button>
+          </div>
+          <div className={styles.detailLayout}>
           <aside className={styles.detailDescription}>
-            <button className={styles.detailBack} type="button" onClick={() => setShowMonear(false)}>← UXUI</button>
             <h1>MONEAR</h1>
             <p className={styles.detailSubtitle}>사회초년생을 위한 금융 로드맵 서비스</p>
             <dl className={styles.detailFacts}>
@@ -76,13 +60,11 @@ export default function Home() {
             <p className={styles.detailCopy}>막연하게만 느껴지는 재무 계획, 어디서부터 시작하고 있나요?<br />MONEAR는 사회초년생의 재무 목표를 구체적인<br />로드맵으로 설계하고, 이를 실천 가능한 금융 행동으로<br />연결하는 서비스입니다.<br />현재의 수입과 지출, 목표와 상황을 바탕으로 나에게 필요한<br />방향을 찾고, 예상치 못한 변화에도 유연하게 계획을 조정하며<br />원하는 미래에 한 걸음씩 가까워질 수 있도록 돕습니다.<br />작은 금융 행동으로 미래의 목표를 가까이, MONEAR.</p>
           </aside>
           <div
-            className={`${styles.portfolioViewer} ${isDragging ? styles.portfolioDragging : ""}`}
-            tabIndex={0} role="region" aria-label="MONEAR 웹포트폴리오 스크롤 영역"
-            onPointerDown={startPortfolioDrag} onPointerMove={movePortfolioDrag}
-            onPointerUp={endPortfolioDrag} onPointerCancel={endPortfolioDrag}
-            onLostPointerCapture={endPortfolioDrag}
+            className={styles.portfolioViewer}
+            tabIndex={0} role="region" aria-label="머니어 아카이빙 스크롤 영역"
           >
-            <Image src="/monear-portfolio.png" alt="MONEAR 웹포트폴리오: 사회초년생을 위한 금융 로드맵 서비스와 프로젝트 팀 소개" width={960} height={1847} unoptimized draggable={false} className={styles.portfolioImage} />
+            <Image src="/monear-archiving.png" alt="머니어 아카이빙: 금융 로드맵 서비스 MONEAR의 표지, 앱 화면과 프로젝트 팀 소개" width={960} height={1847} unoptimized draggable={false} className={styles.portfolioImage} />
+          </div>
           </div>
         </section>
       ) : (

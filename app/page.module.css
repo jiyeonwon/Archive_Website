@@ -172,13 +172,21 @@
   line-height: 1.61vw;
 }
 
-.detailLayout {
+.detailWindow {
   position: relative;
-  margin: 29.35185svh 7.76042vw 0 3.17708vw;
+  margin: 22.03704svh auto 0;
+  width: 86.97917vw;
+  height: 69.35185svh;
+  border: 1px solid #000;
   display: grid;
-  grid-template-columns: 25.20833vw minmax(0, 1fr);
-  gap: 2.5vw;
-  height: 60.64852svh;
+  grid-template-rows: 3.54167vw minmax(0, 1fr);
+  overflow: hidden;
+}
+
+.detailLayout {
+  display: grid;
+  grid-template-columns: 33.35329% minmax(0, 1fr);
+  min-height: 0;
 }
 
 .portfolioViewer {
@@ -189,33 +197,31 @@
   overscroll-behavior: contain;
   scrollbar-gutter: stable;
   scrollbar-width: thin;
-  scrollbar-color: #111 #e6e6e6;
-  padding-right: 1vw;
+  scrollbar-color: #c8c8c8 #fff;
+  padding: 2.13542vw 3.85417vw 0;
 }
 
 .portfolioViewer::-webkit-scrollbar { width: 8px; }
-.portfolioViewer::-webkit-scrollbar-track { background: #e6e6e6; }
-.portfolioViewer::-webkit-scrollbar-thumb { background: #111; border-radius: 4px; }
+.portfolioViewer::-webkit-scrollbar-track { background: #fff; }
+.portfolioViewer::-webkit-scrollbar-thumb { background: #c8c8c8; border-radius: 4px; }
 .portfolioViewer:focus-visible { outline: 1px solid #111; outline-offset: 3px; }
-.portfolioImage { display: block; width: 100%; height: auto; user-select: none; cursor: grab; }
-.portfolioDragging .portfolioImage { cursor: grabbing; }
-.detailDescription { position: relative; padding-top: 0.98958vw; overflow-y: auto; }
+.portfolioImage { display: block; width: 100%; height: auto; user-select: none; }
+.detailDescription { min-width: 0; margin: 0.57292vw 0 0.83333vw; padding: 0.98958vw 2.5vw 0 1.25vw; border-right: 1px solid #b5b5b5; overflow-y: auto; }
 .detailDescription h1 { font-size: 1.66667vw; font-weight: 500; line-height: 1.7; }
 .detailSubtitle { font-size: 1.04167vw; font-weight: 400; min-height: 3.17708vw; line-height: 1.7; border-bottom: 1px solid #000; }
-.detailFacts { margin-top: 2.5vw; font-size: 1.04167vw; line-height: 1.7; font-weight: 400; }
+.detailFacts { margin-top: 2.5vw; width: 85.95041%; font-size: 1.04167vw; line-height: 1.7; font-weight: 400; }
 .detailFacts div { display: flex; justify-content: space-between; margin-bottom: 0.46875vw; }
-.detailCopy { margin-top: 3.22917vw; font-size: 0.9375vw; line-height: 1.7; font-weight: 400; }
-.detailBack { position: absolute; right: 0; top: 0; border: 0; background: transparent; font: inherit; font-size: 0.83333vw; cursor: pointer; }
+.detailCopy { margin-top: 5.20833vw; font-size: 0.9375vw; line-height: 1.7; font-weight: 400; }
 
 @media (max-width: 700px) {
-  .detailLayout { margin: 32px 20px; height: auto; grid-template-columns: 1fr; gap: 24px; }
-  .portfolioViewer { height: 60svh; padding-right: 8px; }
-  .detailDescription { padding-top: 16px; }
+  .detailWindow { margin: 32px 16px; width: calc(100% - 32px); height: auto; grid-template-rows: 48px auto; }
+  .detailLayout { grid-template-columns: 1fr; }
+  .portfolioViewer { height: 60svh; padding: 16px; border-top: 1px solid #b5b5b5; }
+  .detailDescription { margin: 0; padding: 20px 16px; border-right: 0; }
   .detailDescription h1 { font-size: 24px; }
   .detailSubtitle { font-size: 16px; padding-bottom: 16px; }
   .detailFacts { margin-top: 24px; font-size: 16px; }
   .detailCopy { margin-top: 24px; font-size: 14px; }
-  .detailBack { font-size: 14px; }
 }
 
 .projectColumns {
