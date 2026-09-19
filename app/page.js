@@ -50,6 +50,7 @@ export default function Home() {
           </div>
           <div className={styles.detailLayout}>
           <aside className={styles.detailDescription}>
+            <div className={styles.detailSummary}>
             <h1>MONEAR</h1>
             <p className={styles.detailSubtitle}>사회초년생을 위한 금융 로드맵 서비스</p>
             <dl className={styles.detailFacts}>
@@ -57,6 +58,7 @@ export default function Home() {
               <div><dt>Type</dt><dd>Team project</dd></div>
               <div><dt>Date</dt><dd>2026.09</dd></div>
             </dl>
+            </div>
             <p className={styles.detailCopy}>막연하게만 느껴지는 재무 계획, 어디서부터 시작하고 있나요?<br />MONEAR는 사회초년생의 재무 목표를 구체적인<br />로드맵으로 설계하고, 이를 실천 가능한 금융 행동으로<br />연결하는 서비스입니다.<br />현재의 수입과 지출, 목표와 상황을 바탕으로 나에게 필요한<br />방향을 찾고, 예상치 못한 변화에도 유연하게 계획을 조정하며<br />원하는 미래에 한 걸음씩 가까워질 수 있도록 돕습니다.<br />작은 금융 행동으로 미래의 목표를 가까이, MONEAR.</p>
           </aside>
           <div
