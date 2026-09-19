@@ -7,7 +7,7 @@ import styles from "./page.module.css";
 const folders = ["UXUI", "INTERACTION", "BRANDING", "EDITORIAL DESIGN"];
 
 export default function Home() {
-  const [showUxui, setShowUxui] = useState(false);
+  const [activeFolder, setActiveFolder] = useState(null);
   const [showMonear, setShowMonear] = useState(false);
   return (
     <main className={styles.archive}>
@@ -27,10 +27,10 @@ export default function Home() {
         </address>
       </header>
 
-      {!showUxui ? <section className={styles.folderGrid} aria-label="Project folders">
+      {!activeFolder ? <section className={styles.folderGrid} aria-label="Project folders">
         {folders.map((folder) => (
           <article className={styles.folder} key={folder}>
-            {folder === "UXUI" && <button type="button" className={styles.folderHitArea} aria-label="UXUI 폴더 열기" onClick={() => setShowUxui(true)} />}
+            {["UXUI", "INTERACTION"].includes(folder) && <button type="button" className={styles.folderHitArea} aria-label={`${folder} 폴더 열기`} onClick={() => setActiveFolder(folder)} />}
             <Image
               className={styles.folderIcon}
               src="/folder.png"
@@ -70,26 +70,26 @@ export default function Home() {
           </div>
         </section>
       ) : (
-        <section className={styles.projectWindow} aria-label="Archive / UXUI">
+        <section className={styles.projectWindow} aria-label={`Archive / ${activeFolder}`}>
           <div className={styles.windowBar}>
             <h1>Archive / UXUI</h1>
-            <button type="button" aria-label="UXUI 폴더 닫기" onClick={() => setShowUxui(false)}>[ X ]</button>
+            <button type="button" aria-label={`${activeFolder} 폴더 닫기`} onClick={() => setActiveFolder(null)}>[ X ]</button>
           </div>
           <aside className={styles.sidebar}>
             <div className={styles.sidebarFolder}>
               <Image src="/folder.png" alt="" width={736} height={736} />
-              <p className={styles.folderLabel}>UXUI</p>
+              <p className={styles.folderLabel}>{activeFolder}</p>
             </div>
-            <p className={styles.projectCount}>01 projects</p>
+            <p className={styles.projectCount}>{activeFolder === "UXUI" ? "01" : "00"} projects</p>
           </aside>
           <div className={styles.projectContent}>
             <h2>select a project</h2>
             <div className={styles.projectColumns} aria-hidden="true">
               <span /><span>Name</span><span>Type</span><span>Date</span><span />
             </div>
-            <button type="button" className={styles.projectRow} onClick={() => setShowMonear(true)} aria-label="MONEAR 상세 작업 열기">
+            {activeFolder === "UXUI" && <button type="button" className={styles.projectRow} onClick={() => setShowMonear(true)} aria-label="MONEAR 상세 작업 열기">
               <span>01</span><span>MONEAR</span><span>Team project</span><span>2026</span><span aria-hidden="true">→</span>
-            </button>
+            </button>}
           </div>
         </section>
       )}
