@@ -66,3 +66,10 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+@media (hover: hover) and (pointer: fine) {
+  html body,
+  html body * {
+    cursor: url("/cursor-chrome.png") 1 1, auto;
+  }
+}
