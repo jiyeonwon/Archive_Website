@@ -176,7 +176,7 @@
   position: relative;
   margin: 29.35185svh 7.76042vw 0 3.17708vw;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 25.20833vw;
+  grid-template-columns: 25.20833vw minmax(0, 1fr);
   gap: 2.5vw;
   height: 60.64852svh;
 }
@@ -197,13 +197,14 @@
 .portfolioViewer::-webkit-scrollbar-track { background: #e6e6e6; }
 .portfolioViewer::-webkit-scrollbar-thumb { background: #111; border-radius: 4px; }
 .portfolioViewer:focus-visible { outline: 1px solid #111; outline-offset: 3px; }
-.portfolioImage { display: block; width: 100%; height: auto; }
+.portfolioImage { display: block; width: 100%; height: auto; user-select: none; cursor: grab; }
+.portfolioDragging .portfolioImage { cursor: grabbing; }
 .detailDescription { position: relative; padding-top: 0.98958vw; overflow-y: auto; }
 .detailDescription h1 { font-size: 1.66667vw; font-weight: 500; line-height: 1.7; }
 .detailSubtitle { font-size: 1.04167vw; font-weight: 400; min-height: 3.17708vw; line-height: 1.7; border-bottom: 1px solid #000; }
-.detailFacts { margin-top: 2.5vw; font-size: 1.25vw; line-height: 1.7; font-weight: 400; }
+.detailFacts { margin-top: 2.5vw; font-size: 1.04167vw; line-height: 1.7; font-weight: 400; }
 .detailFacts div { display: flex; justify-content: space-between; margin-bottom: 0.46875vw; }
-.detailCopy { margin-top: 3.22917vw; font-size: 0.83333vw; line-height: 1.7; font-weight: 400; }
+.detailCopy { margin-top: 3.22917vw; font-size: 0.9375vw; line-height: 1.7; font-weight: 400; }
 .detailBack { position: absolute; right: 0; top: 0; border: 0; background: transparent; font: inherit; font-size: 0.83333vw; cursor: pointer; }
 
 @media (max-width: 700px) {
