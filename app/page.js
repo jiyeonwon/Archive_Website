@@ -65,7 +65,7 @@ export default function Home() {
             className={styles.portfolioViewer}
             tabIndex={0} role="region" aria-label="머니어 아카이빙 스크롤 영역"
           >
-            <Image src="/monear-archiving.png" alt="머니어 아카이빙: 금융 로드맵 서비스 MONEAR의 표지, 앱 화면과 프로젝트 팀 소개" width={960} height={1847} unoptimized draggable={false} className={styles.portfolioImage} />
+            <Image src="/monear-archiving-hd.png" alt="머니어 아카이빙: 금융 로드맵 서비스 MONEAR의 표지, 앱 화면과 프로젝트 팀 소개" width={1920} height={3694} unoptimized draggable={false} className={styles.portfolioImage} />
           </div>
           </div>
         </section>

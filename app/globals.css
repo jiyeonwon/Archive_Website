@@ -70,6 +70,6 @@ a {
 @media (hover: hover) and (pointer: fine) {
   html body,
   html body * {
-    cursor: url("/cursor-chrome.png") 1 1, auto;
+    cursor: url("/cursor-chrome.png") 1 1, auto !important;
   }
 }
