@@ -260,7 +260,6 @@
 .detailCopy > span { display: block; }
 .detailCopyCompact { max-width: 23.90625vw; }
 .detailSentence { text-wrap: pretty; }
-.detailOpeningMobile { display: none !important; }
 .detailBodyMobile { display: none !important; }
 
 @media (max-width: 1024px) {
@@ -285,8 +284,6 @@
   }
   .detailCopyCompact { max-width: 100%; }
   .detailOpeningDesktop { display: none !important; }
-  .detailOpeningMobile { display: block !important; }
-  .detailOpeningMobile > span { display: block; }
   .detailBodyDesktop { display: none !important; }
   .detailBodyMobile { display: inline !important; }
   .detailBodyMobile > span:first-child { display: inline; }
