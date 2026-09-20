@@ -23,7 +23,7 @@ export default function Home() {
         <address className={styles.contact}>
           <p>[ Contact ]</p>
           <p>+82 10-3160-8240</p>
-          <p>jiyeon.direct@gmail.com</p>
+          <p><a href="mailto:jiyeon.direct@gmail.com" aria-label="jiyeon.direct@gmail.com으로 메일 보내기">jiyeon.direct@gmail.com</a></p>
         </address>
       </header>
 
