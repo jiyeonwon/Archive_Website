@@ -14,7 +14,11 @@
 ├─ INTERACTION 클릭
 │  └─ INTERACTION 프로젝트 목록 (00 projects)
 │     └─ [ X ] 클릭 → 홈
-├─ BRANDING (현재 클릭 연결 없음)
+├─ BRANDING 클릭
+│  └─ BRANDING 프로젝트 목록
+│     ├─ Tea-ka 클릭 → Tea-ka 상세 화면
+│     │  └─ [ X ] 클릭 → BRANDING 프로젝트 목록
+│     └─ [ X ] 클릭 → 홈
 └─ EDITORIAL DESIGN (현재 클릭 연결 없음)
 
 우측 상단 이메일 클릭
@@ -24,7 +28,7 @@
 상태값은 다음 두 가지로 관리한다.
 
 - `activeFolder`: `null`, `UXUI`, `INTERACTION`
-- `showMonear`: MONEAR 상세 화면 표시 여부
+- `activeProject`: `null`, `UXUI`, `BRANDING`
 
 ## 2. 디자인 원칙
 
@@ -127,8 +131,8 @@
 
 ### 상태
 
-- 클릭 가능한 폴더: UXUI, INTERACTION
-- 미연결 폴더: BRANDING, EDITORIAL DESIGN
+- 클릭 가능한 폴더: UXUI, INTERACTION, BRANDING
+- 미연결 폴더: EDITORIAL DESIGN
 - 클릭 가능한 폴더에 hover/focus 시 이름표가 검은 배경/흰 글자로 전환
 
 ## 6. 프로젝트 목록 창
@@ -179,7 +183,7 @@
 - 프로젝트 행: 최소 80px
 - 터치 가능한 닫기 버튼: 최소 44 × 44px
 
-## 7. MONEAR 상세 화면
+## 7. 프로젝트 상세 화면
 
 ### 창 컨테이너 — 데스크톱
 
@@ -205,14 +209,40 @@
 ### 작업 설명 간격
 
 - 설명 칸 바깥 여백: 상 `0.57292vw`, 하 `0.83333vw`
-- 설명 칸 내부 패딩: 상 `0.98958vw`, 우 `1.25vw`, 좌 `2.5vw`
-- 상단 요약 영역 고정 높이: `14.58333vw` (280px)
-- 부제 최소 높이: `3.17708vw` (61px)
-- 부제 아래 1px 검은 선
+- 설명 칸 내부 패딩: 상 `0.98958vw`, 좌우 `1.25vw`
+- 공통 content block 최대 너비: `25.3125vw` (1920px 기준 486px)
+- 공통 content block 정렬: `margin-inline: auto`로 설명 패널 안에서 수평 중앙 정렬
+- 상단 요약 영역은 콘텐츠 높이에 맞게 늘어나는 `height: auto` 방식
+- 제목과 한 줄 소개 사이 간격: `0.20833vw` (1920px 기준 약 4px)
+- 한 줄 소개 아래 여백: `0.72917vw` (1920px 기준 약 14px)
+- 한 줄 소개 아래 1px 검은 선
 - 메타 정보 위 간격: `2.5vw` (48px)
-- 메타 영역 너비: 설명 칸의 `85.95041%`
-- 메타 각 행 아래 간격: `0.46875vw` (9px)
-- 상단 요약과 본문 사이: `2.08333vw` (40px)
+- 메타 영역과 본문 너비: 설명 칸 콘텐츠 영역의 `100%`; 별도의 `max-width` 제한 없음
+- 메타 행 사이 간격: `0.46875vw` (9px)
+- 메타 영역과 본문 사이: `2.08333vw` (40px)
+
+### Project Detail Layout / Alignment
+
+- 제목, 한 줄 소개, divider, 메타정보, 세부설명 본문은 하나의 공통 `detailContent` 컨테이너 안에서 `width: 100%`를 사용한다.
+- `detailContent`는 데스크톱에서 `max-width: 25.3125vw`와 `margin-inline: auto`를 사용해 설명 패널의 수평 중앙에 놓는다.
+- 설명 패널의 좌우 패딩은 동일한 `1.25vw`이며, content block의 실제 바깥 여백도 좌우가 동일하게 유지된다.
+- content block만 중앙 정렬하고 내부 텍스트는 모두 `text-align: left`를 유지한다.
+- 내부 요소에 서로 다른 좌우 패딩, 음수 마진, 임의 offset을 적용하지 않는다.
+- 모바일에서는 설명 패널의 좌우 16px 패딩 안에서 `max-width: none`과 `width: 100%`를 사용한다.
+- 새 프로젝트 상세페이지도 프로젝트별 정렬 예외 클래스를 만들지 않고 이 공통 content container를 재사용한다.
+
+### 상세페이지 공통 타이포 규칙
+
+MONEAR와 Tea-ka를 포함한 모든 프로젝트 상세페이지는 아래 규칙과 동일한 CSS 클래스를 사용한다.
+
+- 제목: 데스크톱 32px 상당(`1.66667vw`), 모바일 24px, 굵기 500, 행간 1.35
+- 한 줄 소개: 데스크톱 20px 상당(`1.04167vw`), 모바일 16px, 행간 1.7
+- 본문: 데스크톱 18px 상당(`0.9375vw`), 모바일 15px, 데스크톱 행간 1.7 / 모바일 행간 1.8
+- 제목 → 한 줄 소개 → 구분선 순서의 간격은 공통값을 사용하며 프로젝트별 고정 높이나 예외 클래스를 두지 않는다.
+- 한 줄 소개와 본문에는 `word-break: keep-all`을 적용해 한국어가 글자 중간에서 끊기지 않도록 한다.
+- 본문에는 좁은 고정 폭이나 별도의 `max-width`를 두지 않으며, 공통 content grid의 가용 폭을 따라 자연스럽게 확장한다.
+- 콘텐츠 안에 줄 배치를 위한 `<br>`을 넣지 않는다. 줄바꿈은 컨테이너 폭과 브라우저 레이아웃에 맡긴다.
+- 긴 영문 등 예외적인 문자열만 영역 밖으로 넘치지 않도록 `overflow-wrap: break-word`를 함께 사용한다.
 
 ### 작업 사진 영역
 
@@ -236,7 +266,7 @@
 - 창 좌우 여백: 16px
 - 콘텐츠를 1열로 전환
 - 설명칸 내부 스크롤을 제거하고 페이지 전체 스크롤 사용
-- Figma의 강제 `<br>`는 모바일에서 숨겨 화면 너비에 맞춰 자연스럽게 줄바꿈
+- 소개와 본문은 강제 `<br>` 없이 화면 너비에 맞춰 자연스럽게 줄바꿈
 - 이미지 영역 내부 스크롤을 제거하고 원본 비율로 전체 표시
 - 이미지 상단 12px 여백
 
@@ -286,7 +316,7 @@
 ## 11. 재사용 규칙
 
 - 새 폴더 화면은 `projectWindow`, `windowBar`, `sidebar`, `projectContent` 구조를 재사용한다.
-- 새 상세 화면은 `detailWindow`, `detailLayout`, `portfolioViewer`, `detailDescription` 구조를 재사용한다.
+- MONEAR와 Tea-ka 상세 화면은 `detailWindow`, `detailLayout`, `portfolioViewer`, `detailDescription` 구조를 공유한다.
 - 작업 이미지는 고해상도 원본을 사용하고 CSS에서 확대하지 않는다.
 - 이미지에는 반드시 실제 `width`와 `height`를 지정해 레이아웃 이동을 방지한다.
 - 데스크톱 수치는 Figma 1920px 값을 `값 ÷ 1920 × 100vw`로 환산한다.
@@ -302,4 +332,3 @@
 | `app/layout.js` | 문서 언어와 사이트 메타데이터 |
 | `public/folder.png` | 폴더 이미지 |
 | `public/monear-archiving-hd.png` | MONEAR 아카이빙 작업 이미지 |
-
