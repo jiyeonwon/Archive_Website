@@ -283,7 +283,6 @@
     text-wrap: pretty;
   }
   .detailCopyCompact { max-width: 100%; }
-  .detailOpeningDesktop { display: none !important; }
   .detailBodyDesktop { display: none !important; }
   .detailBodyMobile { display: inline !important; }
   .detailBodyMobile > span:first-child { display: inline; }

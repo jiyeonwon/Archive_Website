@@ -238,7 +238,7 @@
 - 모바일에서는 설명 패널의 좌우 16px 패딩 안에서 공통 content 최대 폭과 본문 `width`/`max-width`를 모두 `100%`로 사용한다.
 - 모바일의 `detailContent`와 `detailBody`는 `min-width: 0`, `margin-inline: 0`을 사용해 좁은 아이폰 폭에서도 부모 영역을 밀어내지 않는다.
 - 모바일 작업 설명 본문은 `white-space: normal`, `word-break: keep-all`, `overflow-wrap: break-word`, `text-wrap: pretty`를 공통 적용해 단어 단위로 자연스럽게 reflow한다.
-- 모바일 MONEAR에서는 도입 문장을 숨기고 본문부터 표시한다. 데스크톱 도입 문구는 유지한다.
+- MONEAR 세부설명은 별도의 도입 문장 없이 `MONEAR는…` 본문부터 시작한다.
 - 새 프로젝트 상세페이지도 프로젝트별 정렬 예외 클래스를 만들지 않고 이 공통 content container를 재사용한다.
 - 모든 프로젝트의 작업 설명 본문은 하나의 `.detailCopy` 규칙만 사용하며 `width`와 `max-width`를 모두 `var(--project-detail-body-width)`로 지정한다.
 - `--project-detail-body-width`의 공통값은 MONEAR에서 사용하는 `100%`이며, 신규 프로젝트는 이 값을 기본으로 사용한다.
