@@ -19,6 +19,7 @@ const projects = {
       body: "MONEAR는 사회초년생의 재무 목표를 구체적인 로드맵으로 설계하고, 이를 실천 가능한 금융 행동으로 연결하는 서비스입니다. 현재의 수입과 지출, 목표와 상황을 바탕으로 나에게 필요한 방향을 찾고, 예상치 못한 변화에도 유연하게 계획을 조정하며 원하는 미래에 한 걸음씩 가까워질 수 있도록 돕습니다.",
       closing: "작은 금융 행동으로 미래의 목표를 가까이, MONEAR.",
     },
+    mobileOpening: ["막연하게만 느껴지는 재무계획,", "어디서 부터 시작하고 있나요?"],
     image: "/monear-archiving-hd.png",
     imageWidth: 1920,
     imageHeight: 3694,
@@ -36,6 +37,7 @@ const projects = {
       body: "블렌딩 티 브랜드입니다. 리추얼 키트와 라포\u00A0형성\u00A0카드\u00A0등 다양한 브랜드 경험을 통해 사람과 사람을 연결하고, 바쁜 업무 환경 속에서도 부담없이 대화를 시작할 수 있는 새로운 오피스 티 문화를 만들어갑니다.",
     },
     compactDescription: true,
+    joinDescriptionOnMobile: true,
     image: "/tea-ka-webportfolio.png",
     imageWidth: 1566,
     imageHeight: 1860,
@@ -142,10 +144,17 @@ export default function Home() {
             </div>
             </div>
             <div className={styles.detailBody}>
-            <p className={`${styles.detailCopy} ${selectedProject.compactDescription ? styles.detailCopyCompact : ""}`}>
+            <p className={`${styles.detailCopy} ${selectedProject.compactDescription ? styles.detailCopyCompact : ""} ${selectedProject.joinDescriptionOnMobile ? styles.detailCopyJoinMobile : ""}`}>
               {typeof selectedProject.description === "string" ? selectedProject.description : (
                 <>
-                  {selectedProject.description.opening && <span className={styles.detailSentence}>{selectedProject.description.opening}</span>}
+                  {selectedProject.description.opening && (selectedProject.mobileOpening ? (
+                    <>
+                      <span className={`${styles.detailSentence} ${styles.detailOpeningDesktop}`}>{selectedProject.description.opening}</span>
+                      <span className={styles.detailOpeningMobile}>
+                        {selectedProject.mobileOpening.map((line) => <span key={line}>{line}</span>)}
+                      </span>
+                    </>
+                  ) : <span className={styles.detailSentence}>{selectedProject.description.opening}</span>)}
                   {selectedProject.description.body && <span>{selectedProject.description.body}</span>}
                   {selectedProject.description.closing && <span className={styles.detailSentence}>{selectedProject.description.closing}</span>}
                 </>

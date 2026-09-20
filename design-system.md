@@ -238,12 +238,14 @@
 - 모바일에서는 설명 패널의 좌우 16px 패딩 안에서 공통 content 최대 폭과 본문 `width`/`max-width`를 모두 `100%`로 사용한다.
 - 모바일의 `detailContent`와 `detailBody`는 `min-width: 0`, `margin-inline: 0`을 사용해 좁은 아이폰 폭에서도 부모 영역을 밀어내지 않는다.
 - 모바일 작업 설명 본문은 `white-space: normal`, `word-break: keep-all`, `overflow-wrap: break-word`, `text-wrap: pretty`를 공통 적용해 단어 단위로 자연스럽게 reflow한다.
+- 모바일 MONEAR 도입 문장은 예외적으로 `막연하게만 느껴지는 재무계획,`과 `어디서 부터 시작하고 있나요?`의 두 줄로 표시한다. 데스크톱 도입 문구는 유지한다.
 - 새 프로젝트 상세페이지도 프로젝트별 정렬 예외 클래스를 만들지 않고 이 공통 content container를 재사용한다.
 - 모든 프로젝트의 작업 설명 본문은 하나의 `.detailCopy` 규칙만 사용하며 `width`와 `max-width`를 모두 `var(--project-detail-body-width)`로 지정한다.
 - `--project-detail-body-width`의 공통값은 MONEAR에서 사용하는 `100%`이며, 신규 프로젝트는 이 값을 기본으로 사용한다.
 - 기본적으로 프로젝트 데이터, 프로젝트명 또는 카테고리를 기준으로 본문 폭을 덮어쓰지 않는다.
 - 명시적으로 더 짧은 본문 그리드를 요구한 Tea-ka는 `detailCopyCompact`를 사용하며, 데스크톱 `max-width: 23.90625vw`, 모바일 `max-width: 100%`로 처리한다. 왼쪽 시작선과 공통 본문 스타일은 유지한다.
 - Tea-ka 본문은 예외적으로 첫 문장 블록을 “만드는”에서 끝내고, 다음 내용은 새 문장 블록에서 시작한다. `<br>` 대신 description 데이터의 `opening`과 `body` 블록을 사용한다.
+- 모바일 Tea-ka 본문은 `opening`과 `body`를 인라인 흐름으로 연결해 “만드는 블렌딩” 사이에 강제 줄바꿈이 생기지 않도록 한다.
 - Tea-ka의 `라포 형성 카드 등`은 하나의 의미 단위이므로 단어 사이에 non-breaking space(`\u00A0`)를 사용해 줄 중간에서 분리하지 않는다.
 - 동일한 화면 크기에서는 모든 프로젝트 본문의 왼쪽 시작점이 같은 content grid를 사용하며, 별도 요청이 없는 본문의 오른쪽 끝점과 좌우 여백도 동일하다.
 - Project Detail의 작업 설명 본문은 Category / Type / Date 메타정보 그리드의 DOM 폭이나 내부 정렬에 종속되지 않고, 독립된 `detailBody`에서 공통 본문 폭을 사용한다.

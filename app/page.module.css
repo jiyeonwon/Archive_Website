@@ -260,6 +260,7 @@
 .detailCopy > span { display: block; }
 .detailCopyCompact { max-width: 23.90625vw; }
 .detailSentence { text-wrap: pretty; }
+.detailOpeningMobile { display: none !important; }
 
 @media (max-width: 1024px) {
   .detailWindow { --project-detail-content-width: 100%; margin: 32px 16px; width: calc(100% - 32px); height: auto; grid-template-rows: 48px auto; }
@@ -282,6 +283,11 @@
     text-wrap: pretty;
   }
   .detailCopyCompact { max-width: 100%; }
+  .detailOpeningDesktop { display: none !important; }
+  .detailOpeningMobile { display: block !important; }
+  .detailOpeningMobile > span { display: block; }
+  .detailCopyJoinMobile > span { display: inline; }
+  .detailCopyJoinMobile > span + span::before { content: " "; }
 }
 
 .projectColumns {
