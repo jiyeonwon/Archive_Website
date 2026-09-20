@@ -266,10 +266,21 @@
   .detailLayout { grid-template-columns: 1fr; grid-template-areas: "description" "portfolio"; }
   .portfolioViewer { height: 60svh; padding: 0; border-top: 1px solid #b5b5b5; }
   .detailDescription { margin: 0; padding: 20px 16px; border-left: 0; }
+  .detailContent,
+  .detailBody { width: 100%; max-width: 100%; min-width: 0; margin-inline: 0; }
   .detailDescription h1 { margin-bottom: 4px; font-size: 24px; }
   .detailSubtitle { padding-bottom: 14px; font-size: 16px; }
   .detailFacts { gap: 8px; margin-top: 24px; font-size: 16px; }
-  .detailCopy { margin-top: 24px; font-size: 14px; }
+  .detailCopy {
+    width: 100%;
+    max-width: 100%;
+    margin: 24px 0 0;
+    font-size: 14px;
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    text-wrap: pretty;
+  }
   .detailCopyCompact { max-width: 100%; }
 }
 

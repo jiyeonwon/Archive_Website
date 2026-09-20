@@ -236,6 +236,8 @@
 - content block만 중앙 정렬하고 내부 텍스트는 모두 `text-align: left`를 유지한다.
 - 내부 요소에 서로 다른 좌우 패딩, 음수 마진, 임의 offset을 적용하지 않는다.
 - 모바일에서는 설명 패널의 좌우 16px 패딩 안에서 공통 content 최대 폭과 본문 `width`/`max-width`를 모두 `100%`로 사용한다.
+- 모바일의 `detailContent`와 `detailBody`는 `min-width: 0`, `margin-inline: 0`을 사용해 좁은 아이폰 폭에서도 부모 영역을 밀어내지 않는다.
+- 모바일 작업 설명 본문은 `white-space: normal`, `word-break: keep-all`, `overflow-wrap: break-word`, `text-wrap: pretty`를 공통 적용해 단어 단위로 자연스럽게 reflow한다.
 - 새 프로젝트 상세페이지도 프로젝트별 정렬 예외 클래스를 만들지 않고 이 공통 content container를 재사용한다.
 - 모든 프로젝트의 작업 설명 본문은 하나의 `.detailCopy` 규칙만 사용하며 `width`와 `max-width`를 모두 `var(--project-detail-body-width)`로 지정한다.
 - `--project-detail-body-width`의 공통값은 MONEAR에서 사용하는 `100%`이며, 신규 프로젝트는 이 값을 기본으로 사용한다.
@@ -295,9 +297,10 @@ MONEAR, Tea-ka, 戀人을 포함한 모든 프로젝트 상세페이지는 아�
 ```
 
 - 창 좌우 여백: 16px
+- 설명 칸 좌우 padding: 16px. 따라서 작업 설명 본문은 모든 아이폰 폭에서 상세 창과 설명 칸의 공통 여백 안쪽을 `width: 100%`로 사용한다.
 - 콘텐츠를 1열로 전환
 - 설명칸 내부 스크롤을 제거하고 페이지 전체 스크롤 사용
-- 소개와 본문은 강제 `<br>` 없이 화면 너비에 맞춰 자연스럽게 줄바꿈
+- 모든 프로젝트의 작업 설명 본문은 강제 `<br>` 없이 `word-break: keep-all` 기준으로 화면 너비에 맞춰 자연스럽게 줄바꿈
 - 이미지 영역 내부 스크롤을 제거하고 원본 비율로 전체 표시
 - 이미지와 비디오 영역의 좌우 및 상단 여백은 `0`
 
