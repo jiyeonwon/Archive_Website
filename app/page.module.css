@@ -260,6 +260,7 @@
 .detailCopy > span { display: block; }
 .detailCopyCompact { max-width: 23.90625vw; }
 .detailSentence { text-wrap: pretty; }
+.detailOpeningMobile { display: none !important; }
 .detailBodyMobile { display: none !important; }
 
 @media (max-width: 1024px) {
@@ -283,6 +284,10 @@
     text-wrap: pretty;
   }
   .detailCopyCompact { max-width: 100%; }
+  .detailOpeningDesktop { display: none !important; }
+  .detailOpeningMobile { display: inline !important; }
+  .detailOpeningMobile > span:first-child { display: block; }
+  .detailOpeningMobile > span + span { display: inline; }
   .detailBodyDesktop { display: none !important; }
   .detailBodyMobile { display: inline !important; }
   .detailBodyMobile > span:first-child { display: inline; }

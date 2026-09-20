@@ -34,6 +34,10 @@ const projects = {
       opening: "Tea-ka는 차를 매개로 오피스 속 자연스러운 소통을 만드는",
       body: "블렌딩 티 브랜드입니다. 리추얼 키트와 라포\u00A0형성\u00A0카드\u00A0등 다양한 브랜드 경험을 통해 사람과 사람을 연결하고, 바쁜 업무 환경 속에서도 부담없이 대화를 시작할 수 있는 새로운 오피스 티 문화를 만들어갑니다.",
     },
+    mobileOpening: [
+      "Tea-ka는 차를 매개로 오피스 속 자연스러운",
+      "소통을 만드는",
+    ],
     mobileBody: [
       "블렌딩 티 브랜드입니다.",
       "리추얼 키트와 라포\u00A0형성\u00A0카드\u00A0등 다양한 브랜드 경험을 통해 사람과 사람을 연결하고, 바쁜 업무 환경 속에서도 부담없이 대화를 시작할 수 있는 새로운 오피스 티 문화를 만들어갑니다.",
@@ -149,7 +153,14 @@ export default function Home() {
             <p className={`${styles.detailCopy} ${selectedProject.compactDescription ? styles.detailCopyCompact : ""} ${selectedProject.joinDescriptionOnMobile ? styles.detailCopyJoinMobile : ""}`}>
               {typeof selectedProject.description === "string" ? selectedProject.description : (
                 <>
-                  {selectedProject.description.opening && <span className={styles.detailSentence}>{selectedProject.description.opening}</span>}
+                  {selectedProject.description.opening && (selectedProject.mobileOpening ? (
+                    <>
+                      <span className={`${styles.detailSentence} ${styles.detailOpeningDesktop}`}>{selectedProject.description.opening}</span>
+                      <span className={styles.detailOpeningMobile}>
+                        {selectedProject.mobileOpening.map((line) => <span key={line}>{line}</span>)}
+                      </span>
+                    </>
+                  ) : <span className={styles.detailSentence}>{selectedProject.description.opening}</span>)}
                   {selectedProject.description.body && (selectedProject.mobileBody ? (
                     <>
                       <span className={styles.detailBodyDesktop}>{selectedProject.description.body}</span>
