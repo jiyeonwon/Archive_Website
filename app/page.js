@@ -14,7 +14,11 @@ const projects = {
     category: "UXUI Design",
     date: "2026.09",
     subtitle: "사회초년생을 위한 금융 로드맵 서비스",
-    description: "막연하게만 느껴지는 재무 계획, 어디서부터 시작하고 있나요? MONEAR는 사회초년생의 재무 목표를 구체적인 로드맵으로 설계하고, 이를 실천 가능한 금융 행동으로 연결하는 서비스입니다. 현재의 수입과 지출, 목표와 상황을 바탕으로 나에게 필요한 방향을 찾고, 예상치 못한 변화에도 유연하게 계획을 조정하며 원하는 미래에 한 걸음씩 가까워질 수 있도록 돕습니다. 작은 금융 행동으로 미래의 목표를 가까이, MONEAR.",
+    description: {
+      opening: "막연하게만 느껴지는 재무 계획, 어디서부터 시작하고 있나요?",
+      body: "MONEAR는 사회초년생의 재무 목표를 구체적인 로드맵으로 설계하고, 이를 실천 가능한 금융 행동으로 연결하는 서비스입니다. 현재의 수입과 지출, 목표와 상황을 바탕으로 나에게 필요한 방향을 찾고, 예상치 못한 변화에도 유연하게 계획을 조정하며 원하는 미래에 한 걸음씩 가까워질 수 있도록 돕습니다.",
+      closing: "작은 금융 행동으로 미래의 목표를 가까이, MONEAR.",
+    },
     image: "/monear-archiving-hd.png",
     imageWidth: 1920,
     imageHeight: 3694,
@@ -28,6 +32,10 @@ const projects = {
     date: "2026.06",
     subtitle: "업무 공간에 감각적인 휴식과 팀의 소통을 더하는 오피스 티(Tea) 구독 서비스",
     description: "Tea-ka는 차를 매개로 오피스 속 자연스러운 소통을 만드는 블렌딩 티 브랜드입니다. 리추얼 키트와 라포 형성 카드 등 다양한 브랜드 경험을 통해 사람과 사람을 연결하고, 바쁜 업무 환경 속에서도 부담없이 대화를 시작할 수 있는 새로운 오피스 티 문화를 만들어갑니다.",
+    image: "/tea-ka-webportfolio.png",
+    imageWidth: 1566,
+    imageHeight: 1860,
+    imageAlt: "Tea-ka 오피스 티 구독 서비스 브랜드 웹 포트폴리오",
   },
 };
 
@@ -86,7 +94,15 @@ export default function Home() {
               <div><dt>Date</dt><dd>{selectedProject.date}</dd></div>
             </dl>
             </div>
-            <p className={styles.detailCopy}>{selectedProject.description}</p>
+            <p className={styles.detailCopy}>
+              {typeof selectedProject.description === "string" ? selectedProject.description : (
+                <>
+                  <span className={styles.detailSentence}>{selectedProject.description.opening}</span>
+                  <span>{selectedProject.description.body}</span>
+                  <span className={styles.detailSentence}>{selectedProject.description.closing}</span>
+                </>
+              )}
+            </p>
             </div>
           </aside>
           <div
