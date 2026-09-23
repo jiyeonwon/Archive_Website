@@ -49,6 +49,22 @@ const projects = {
     imageHeight: 1860,
     imageAlt: "Tea-ka 오피스 티 구독 서비스 브랜드 웹 포트폴리오",
   },
+  INTERACTION: {
+    name: "Dynamic Balance",
+    type: "—",
+    year: "—",
+    category: "Interaction",
+    date: "—",
+    subtitle: "",
+    description: "",
+    media: [
+      {
+        type: "iframe",
+        src: "/dynamic_balance/index.html",
+        title: "Dynamic Balance interactive canvas",
+      },
+    ],
+  },
   "EDITORIAL DESIGN": {
     name: "戀人",
     type: "Personal project",
@@ -81,6 +97,37 @@ const projects = {
     ],
   },
 };
+
+function ProjectMedia({ media }) {
+  if (media.type === "iframe") {
+    return (
+      <iframe
+        className={`${styles.portfolioMedia} ${styles.interactiveFrame}`}
+        src={media.src}
+        title={media.title}
+        loading="eager"
+        onLoad={(event) => {
+          const canvas = event.currentTarget.contentDocument?.querySelector("canvas");
+
+          if (canvas) {
+            canvas.style.width = "100%";
+            canvas.style.height = "100%";
+          }
+        }}
+      />
+    );
+  }
+
+  if (media.type === "video") {
+    return (
+      <video className={styles.portfolioMedia} autoPlay muted loop playsInline preload="metadata" aria-label={media.label}>
+        <source src={media.src} type="video/mp4" />
+      </video>
+    );
+  }
+
+  return <Image src={media.src} alt={media.alt} width={media.width} height={media.height} unoptimized draggable={false} className={styles.portfolioMedia} />;
+}
 
 export default function Home() {
   const [activeFolder, setActiveFolder] = useState(null);
@@ -180,13 +227,7 @@ export default function Home() {
             tabIndex={0} role="region" aria-label={`${selectedProject.name} 작업 이미지 영역`}
           >
             <div className={`${styles.portfolioMediaStack} ${selectedProject.darkMedia ? styles.portfolioMediaStackDark : ""}`}>
-              {selectedMedia.map((media) => media.type === "video" ? (
-                <video key={media.src} className={styles.portfolioMedia} autoPlay muted loop playsInline preload="metadata" aria-label={media.label}>
-                  <source src={media.src} type="video/mp4" />
-                </video>
-              ) : (
-                <Image key={media.src} src={media.src} alt={media.alt} width={media.width} height={media.height} unoptimized draggable={false} className={styles.portfolioMedia} />
-              ))}
+              {selectedMedia.map((media) => <ProjectMedia media={media} key={media.src} />)}
             </div>
           </div>
           </div>

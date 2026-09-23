@@ -216,6 +216,7 @@
 .portfolioMediaStack { display: flex; width: 100%; flex-direction: column; gap: 0; margin: 0; padding: 0; line-height: 0; }
 .portfolioMediaStackDark { background: #000; }
 .portfolioMedia { display: block; width: 100%; height: auto; margin: 0; padding: 0; border: 0; object-fit: contain; vertical-align: top; user-select: none; }
+.interactiveFrame { aspect-ratio: 900 / 700; overflow: hidden; background: #1b1b1b; }
 .detailDescription { grid-area: description; min-width: 0; margin: 0.57292vw 0 0.83333vw; padding: 0.98958vw 1.25vw 0; border-left: 1px solid #b5b5b5; overflow-y: auto; }
 .detailContent,
 .detailBody { width: 100%; max-width: var(--project-detail-content-width); margin-inline: auto; text-align: left; }

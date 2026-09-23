@@ -12,7 +12,9 @@
 │     │  └─ [ X ] 클릭 → UXUI 프로젝트 목록
 │     └─ [ X ] 클릭 → 홈
 ├─ INTERACTION 클릭
-│  └─ INTERACTION 프로젝트 목록 (00 projects)
+│  └─ INTERACTION 프로젝트 목록
+│     ├─ Dynamic Balance 클릭 → Dynamic Balance 상세 화면
+│     │  └─ [ X ] 클릭 → INTERACTION 프로젝트 목록
 │     └─ [ X ] 클릭 → 홈
 ├─ BRANDING 클릭
 │  └─ BRANDING 프로젝트 목록
@@ -32,7 +34,7 @@
 상태값은 다음 두 가지로 관리한다.
 
 - `activeFolder`: `null`, `UXUI`, `INTERACTION`
-- `activeProject`: `null`, `UXUI`, `BRANDING`, `EDITORIAL DESIGN`
+- `activeProject`: `null`, `UXUI`, `INTERACTION`, `BRANDING`, `EDITORIAL DESIGN`
 
 ## 2. 디자인 원칙
 
@@ -285,6 +287,9 @@ MONEAR, Tea-ka, 戀人을 포함한 모든 프로젝트 상세페이지는 아�
 - 이미지 드래그는 비활성화
 - 아카이빙과 설명 영역 모두 동일한 회색 스크롤바 사용
 - 여러 미디어는 프로젝트 데이터의 `media` 배열 순서대로 렌더링한다.
+- 인터랙티브 프로젝트는 동일한 `portfolioViewer`와 `portfolioMediaStack` 안에서 iframe으로 표시하며 새 탭이나 독립 페이지로 이동하지 않는다.
+- Dynamic Balance iframe은 `/dynamic_balance/index.html`을 불러오고 `width: 100%`, `aspect-ratio: 900 / 700`, `display: block`, `border: 0`을 사용한다.
+- iframe 로드 후 원본 900×700 canvas의 CSS 표시 크기만 iframe의 100%로 맞춰 데스크톱과 모바일에서 비율을 유지하며 반응형으로 표시한다. 원본 drawing buffer 크기와 인터랙션 코드는 변경하지 않는다.
 - 연속 미디어 스택은 `display: flex`, `flex-direction: column`, `gap: 0`, `line-height: 0`을 사용하며 각 미디어는 `display: block`, `margin: 0`, `padding: 0`, `border: 0`을 사용한다.
 - 검은 미디어 영역은 `portfolioViewerDark`와 `portfolioMediaStackDark`를 함께 적용해 요소 사이와 컨테이너 패딩 영역에 흰색이 비치지 않도록 한다.
 - 이미지와 비디오는 동일한 `width: 100%`, `height: auto`, `object-fit: contain`을 사용해 원본 비율을 유지한다.
@@ -373,3 +378,5 @@ MONEAR, Tea-ka, 戀人을 포함한 모든 프로젝트 상세페이지는 아�
 | `public/tea-ka-webportfolio.png` | Tea-ka 브랜드 웹 포트폴리오 이미지 |
 | `public/musicbook_video.mp4` | 戀人 뮤직북 작업 영상 |
 | `public/musicbook_image.png` | 戀人 뮤직북 작업 이미지 |
+| `public/dynamic_balance/index.html` | Dynamic Balance p5.js + Matter.js 실행 문서 |
+| `public/dynamic_balance/sketch.js` | Dynamic Balance 원본 인터랙션 코드 |
