@@ -51,10 +51,10 @@ const projects = {
   },
   INTERACTION: {
     name: "Dynamic Balance",
-    type: "—",
-    year: "—",
+    type: "Personal Project",
+    year: "2026",
     category: "Interaction",
-    date: "—",
+    date: "2026",
     subtitle: "",
     description: "",
     media: [
