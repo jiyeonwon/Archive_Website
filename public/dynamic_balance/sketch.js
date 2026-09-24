@@ -114,7 +114,7 @@ function setup() {
     {
       density: 0.002,
 
-      friction: 0.4,
+      friction: 0.2,
 
       frictionAir: 0.02,
 
@@ -163,7 +163,7 @@ function setup() {
     {
       density: 0.004,
 
-      friction: 0.5,
+      friction: 0.12,
 
       restitution: 0.15,
 
@@ -516,7 +516,7 @@ function draw() {
   textAlign(LEFT);
 
   text(
-    "DYNAMIC BALANCE",
+    "Counterweight",
     35,
     42
   );
@@ -527,7 +527,7 @@ function draw() {
   fill(100);
 
   text(
-    "GRAVITY / MASS / FRICTION / BALANCE",
+    "gravity / mass / friction / balance",
     35,
     60
   );
